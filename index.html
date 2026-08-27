@@ -334,8 +334,8 @@
 <div id="lockScreen">
   <div class="lock-card" id="lockCard">
     <div class="lock-icon">🔒💗</div>
-    <h1>A Secret Awaits</h1>
-    <p class="sub">Enter the secret code to open your surprise</p>
+    <h1>Melody Khao Khud Jaan Jaao</h1>
+    <p class="sub">Enter the secret code to open </p>
     <input type="password" id="codeInput" placeholder="Enter code..." autocomplete="off">
     <button id="enterBtn">Unlock 💝</button>
     <div id="errMsg"></div>
@@ -415,7 +415,7 @@
       bgMusic.play().catch(()=>{ /* autoplay might be blocked; user can tap the music button */ });
       window.scrollTo(0,0);
     } else {
-      errMsg.textContent = "Oops! That's not quite right 💭 Try again.";
+      errMsg.textContent = "Ohoooo! Bhul jati hai kyaa 💭 Try again.";
       lockCard.classList.remove('shake');
       void lockCard.offsetWidth;
       lockCard.classList.add('shake');
