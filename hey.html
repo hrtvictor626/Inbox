@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sneha 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink1:#ffd6e8;
+    --pink2:#ff9fc7;
+    --pink3:#ff6fa5;
+    --purple1:#c9a7ff;
+    --purple2:#8e6bd8;
+    --gold:#ffd88a;
+    --cream:#fff7f0;
+    --text-dark:#5a2a45;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{
+    height:100%;
+    font-family:'Quicksand', sans-serif;
+    background:linear-gradient(135deg,var(--pink1),var(--purple1),var(--pink2));
+    background-size:300% 300%;
+    animation:bgFlow 15s ease infinite;
+    color:var(--text-dark);
+    overflow-x:hidden;
+  }
+  @keyframes bgFlow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  /* ---------- Floating hearts background ---------- */
+  .hearts{
+    position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+  }
+  .heart{
+    position:absolute;
+    bottom:-10%;
+    font-size:22px;
+    opacity:0.75;
+    animation:floatUp linear infinite;
+    color:#ff85b3;
+    text-shadow:0 0 6px rgba(255,255,255,0.6);
+  }
+  @keyframes floatUp{
+    0%{ transform:translateY(0) rotate(0deg); opacity:0;}
+    10%{opacity:0.9;}
+    100%{ transform:translateY(-110vh) rotate(360deg); opacity:0;}
+  }
+
+  /* ---------- PAGE 1: Lock Screen ---------- */
+  #lockScreen{
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .lock-card{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.7);
+    border-radius:26px;
+    padding:45px 35px;
+    max-width:420px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(150,60,110,0.35);
+    animation:popIn 0.9s ease;
+  }
+  @keyframes popIn{
+    0%{transform:scale(0.85); opacity:0;}
+    100%{transform:scale(1); opacity:1;}
+  }
+  .lock-card h1{
+    font-family:'Great Vibes', cursive;
+    font-size:42px;
+    color:var(--purple2);
+    margin-bottom:6px;
+  }
+  .lock-card p.sub{
+    font-size:14px;
+    color:#7a4a68;
+    margin-bottom:22px;
+    letter-spacing:0.5px;
+  }
+  .lock-icon{
+    font-size:46px;
+    margin-bottom:10px;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.12);}
+  }
+  #codeInput{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:2px solid var(--pink3);
+    outline:none;
+    font-size:17px;
+    font-family:'Quicksand',sans-serif;
+    text-align:center;
+    letter-spacing:2px;
+    background:rgba(255,255,255,0.85);
+    color:var(--text-dark);
+    transition:0.25s;
+  }
+  #codeInput:focus{
+    border-color:var(--purple2);
+    box-shadow:0 0 0 4px rgba(142,107,216,0.2);
+  }
+  #enterBtn{
+    margin-top:16px;
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--pink3),var(--purple2));
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:0.25s;
+    box-shadow:0 8px 20px rgba(255,111,165,0.45);
+  }
+  #enterBtn:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 12px 26px rgba(255,111,165,0.55);
+  }
+  #errMsg{
+    margin-top:14px;
+    color:#c0304f;
+    font-weight:600;
+    font-size:14px;
+    min-height:20px;
+  }
+  .shake{
+    animation:shake 0.45s;
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-10px);}
+    40%{transform:translateX(10px);}
+    60%{transform:translateX(-8px);}
+    80%{transform:translateX(8px);}
+  }
+
+  /* ---------- PAGE 2: Greeting ---------- */
+  #greetingPage{
+    display:none;
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    padding:40px 16px 80px;
+  }
+  .title-wrap{
+    text-align:center;
+    margin-bottom:35px;
+    padding-top:10px;
+  }
+  .balloons{
+    font-size:30px;
+    letter-spacing:14px;
+    margin-bottom:6px;
+    animation:sway 3s ease-in-out infinite;
+  }
+  @keyframes sway{
+    0%,100%{transform:rotate(-3deg);}
+    50%{transform:rotate(3deg);}
+  }
+  .title-wrap h1{
+    font-family:'Great Vibes', cursive;
+    font-size:clamp(38px,8vw,64px);
+    color:#fff;
+    text-shadow:0 4px 18px rgba(190,60,130,0.55), 0 0 2px #fff;
+  }
+  .title-wrap h2{
+    font-family:'Dancing Script', cursive;
+    font-size:clamp(20px,4vw,30px);
+    color:#fff5fa;
+    margin-top:4px;
+    text-shadow:0 2px 10px rgba(190,60,130,0.5);
+  }
+
+  /* Photo gallery */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:26px;
+    max-width:950px;
+    margin:0 auto 45px;
+    padding:0 10px;
+  }
+  .frame{
+    background:#fffaf5;
+    padding:14px 14px 34px;
+    border-radius:6px;
+    box-shadow:0 15px 30px rgba(120,40,90,0.35);
+    transform:rotate(var(--rot));
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+    position:relative;
+  }
+  .frame:nth-child(1){--rot:-6deg;}
+  .frame:nth-child(2){--rot:4deg;}
+  .frame:nth-child(3){--rot:-3deg;}
+  .frame:nth-child(4){--rot:5deg;}
+  .frame:hover{
+    transform:rotate(0deg) scale(1.05);
+    box-shadow:0 22px 40px rgba(120,40,90,0.45);
+    z-index:5;
+  }
+  .frame img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    border-radius:2px;
+    background:linear-gradient(135deg,var(--pink2),var(--purple1));
+  }
+  .frame .cap{
+    text-align:center;
+    font-family:'Dancing Script', cursive;
+    font-size:17px;
+    color:#8a4a68;
+    margin-top:10px;
+  }
+  .img-fallback{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    color:#fff;
+    background:linear-gradient(135deg,var(--pink3),var(--purple2));
+  }
+
+  /* Letter */
+  .letter-wrap{
+    max-width:700px;
+    margin:0 auto;
+    background:rgba(255,250,245,0.92);
+    border-radius:20px;
+    padding:36px 30px;
+    box-shadow:0 20px 45px rgba(120,40,90,0.35);
+    position:relative;
+  }
+  .letter-wrap::before{
+    content:"💌";
+    position:absolute;
+    top:-26px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:34px;
+    background:var(--cream);
+    padding:6px 12px;
+    border-radius:50%;
+    box-shadow:0 6px 14px rgba(120,40,90,0.3);
+  }
+  .letter-scroll{
+    max-height:420px;
+    overflow-y:auto;
+    padding-right:8px;
+    margin-top:14px;
+  }
+  .letter-scroll::-webkit-scrollbar{width:8px;}
+  .letter-scroll::-webkit-scrollbar-thumb{
+    background:var(--pink3);
+    border-radius:10px;
+  }
+  .letter-scroll p{
+    font-family:'Dancing Script', cursive;
+    font-size:21px;
+    line-height:1.75;
+    color:#5a2a45;
+    margin-bottom:18px;
+  }
+  .signature{
+    text-align:right;
+    font-family:'Great Vibes', cursive;
+    font-size:30px;
+    color:var(--purple2);
+    margin-top:10px;
+  }
+
+  .footer-note{
+    text-align:center;
+    margin-top:40px;
+    font-family:'Dancing Script', cursive;
+    font-size:18px;
+    color:#fff;
+    text-shadow:0 2px 8px rgba(190,60,130,0.5);
+  }
+
+  .music-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:9;
+    background:rgba(255,255,255,0.85);
+    border:none;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(120,40,90,0.4);
+    transition:0.25s;
+  }
+  .music-toggle:hover{transform:scale(1.1);}
+
+  @media (max-width:480px){
+    .gallery{gap:18px;}
+    .letter-wrap{padding:28px 18px;}
+    .letter-scroll p{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="heartsBg"></div>
+
+<!-- ================= PAGE 1: LOCK SCREEN ================= -->
+<div id="lockScreen">
+  <div class="lock-card" id="lockCard">
+    <div class="lock-icon">🔒💗</div>
+    <h1>A Secret Awaits</h1>
+    <p class="sub">Enter the secret code to open your surprise</p>
+    <input type="password" id="codeInput" placeholder="Enter code..." autocomplete="off">
+    <button id="enterBtn">Unlock 💝</button>
+    <div id="errMsg"></div>
+  </div>
+</div>
+
+<!-- ================= PAGE 2: GREETING ================= -->
+<div id="greetingPage">
+  <div class="title-wrap">
+    <div class="balloons">🎈🎂🎈</div>
+    <h1>Happy Birthday</h1>
+    <h2>My Beautiful Sneha ✨</h2>
+  </div>
+
+  <div class="gallery">
+    <div class="frame">
+      <img src="photo1.jpg" alt="Sneha" onerror="this.outerHTML='<div class=&quot;img-fallback&quot;>📷</div>'">
+      <div class="cap">my favorite smile</div>
+    </div>
+    <div class="frame">
+      <img src="photo2.jpg" alt="Sneha" onerror="this.outerHTML='<div class=&quot;img-fallback&quot;>💕</div>'">
+      <div class="cap">us, always</div>
+    </div>
+    <div class="frame">
+      <img src="photo3.jpg" alt="Sneha" onerror="this.outerHTML='<div class=&quot;img-fallback&quot;>🌸</div>'">
+      <div class="cap">that beautiful day</div>
+    </div>
+    <div class="frame">
+      <img src="photo4.jpg" alt="Sneha" onerror="this.outerHTML='<div class=&quot;img-fallback&quot;>✨</div>'">
+      <div class="cap">forever & ever</div>
+    </div>
+  </div>
+
+  <div class="letter-wrap">
+    <div class="letter-scroll">
+      <p>My dearest Sneha,</p>
+      <p>Today the world gets to celebrate the one person who makes my everyday feel like magic — you. On your special day, I just want to pause and tell you how much you mean to me.</p>
+      <p>Your smile has this quiet way of making everything okay, even on the hardest days. Your laugh is my favorite sound, and the way you care for the people around you inspires me more than you know.</p>
+      <p>I still remember the little moments we've shared — the silly jokes, the long calls, the comfortable silences — and every single one of them feels like a gift I get to keep.</p>
+      <p>I hope this year brings you everything your heart is quietly hoping for — new adventures, endless laughter, and days as beautiful as you are. And whatever happens, I'll be right here, cheering for you, holding your hand, loving you a little more each day.</p>
+      <p>Happy Birthday, my love. Here's to you, to us, and to many more birthdays spent together.</p>
+    </div>
+    <div class="signature">Always yours 💖</div>
+  </div>
+
+  <div class="footer-note">made with love, just for you 🎀</div>
+</div>
+
+<audio id="bgMusic" src="heyy.mp4" loop preload="auto"></audio>
+<button class="music-toggle" id="musicToggle" style="display:none;">🔊</button>
+
+<script>
+  // ---- Fixed secret code ----
+  const SECRET_CODE = "bubu";
+
+  const lockScreen = document.getElementById('lockScreen');
+  const greetingPage = document.getElementById('greetingPage');
+  const codeInput = document.getElementById('codeInput');
+  const enterBtn = document.getElementById('enterBtn');
+  const errMsg = document.getElementById('errMsg');
+  const lockCard = document.getElementById('lockCard');
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+
+  function tryUnlock(){
+    const val = codeInput.value.trim().toLowerCase();
+    if(val === SECRET_CODE){
+      lockScreen.style.display = 'none';
+      greetingPage.style.display = 'block';
+      musicToggle.style.display = 'block';
+      bgMusic.play().catch(()=>{ /* autoplay might be blocked; user can tap the music button */ });
+      window.scrollTo(0,0);
+    } else {
+      errMsg.textContent = "Oops! That's not quite right 💭 Try again.";
+      lockCard.classList.remove('shake');
+      void lockCard.offsetWidth;
+      lockCard.classList.add('shake');
+      codeInput.value = '';
+    }
+  }
+
+  enterBtn.addEventListener('click', tryUnlock);
+  codeInput.addEventListener('keyup', (e)=>{
+    if(e.key === 'Enter') tryUnlock();
+  });
+
+  let musicPlaying = true;
+  musicToggle.addEventListener('click', ()=>{
+    if(musicPlaying){
+      bgMusic.pause();
+      musicToggle.textContent = '🔇';
+    } else {
+      bgMusic.play();
+      musicToggle.textContent = '🔊';
+    }
+    musicPlaying = !musicPlaying;
+  });
+
+  // ---- Floating hearts background ----
+  const heartsBg = document.getElementById('heartsBg');
+  const heartEmojis = ['💗','💖','💕','💓','🌸'];
+  function spawnHeart(){
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.fontSize = (14 + Math.random()*20) + 'px';
+    const duration = 6 + Math.random()*6;
+    h.style.animationDuration = duration + 's';
+    heartsBg.appendChild(h);
+    setTimeout(()=>h.remove(), duration*1000);
+  }
+  setInterval(spawnHeart, 500);
+</script>
+
+</body>
+</html>
